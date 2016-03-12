@@ -52,6 +52,6 @@ def make_message(result):
 if __name__ == '__main__':
     while True:
         time.sleep(5)
-        query_result = search_tickets(query_date='2016-02-26', from_station='JMN', to_station='WCN')
+        query_result = search_tickets(query_date='2016-03-26', from_station='JMN', to_station='WCN')
         message_info = make_message(query_result)
         print(message_info)
