@@ -3,6 +3,7 @@ import time
 
 from config import configuration
 from entity.ticket import ticket
+from service import emailsender
 
 
 def search_tickets(query_date, from_station, to_station):
@@ -51,7 +52,12 @@ def make_message(result):
 
 if __name__ == '__main__':
     while True:
-        time.sleep(5)
-        query_result = search_tickets(query_date='2016-03-26', from_station='JMN', to_station='WCN')
+        time.sleep(30)
+        query_result = search_tickets(query_date='2016-04-30', from_station='JMN', to_station='WCN')
         message_info = make_message(query_result)
         print(message_info)
+
+        if emailsender.send_mail(['249048056@qq.com'], "ticket message", message_info):
+            print("发送成功")
+        else:
+            print("发送失败")
